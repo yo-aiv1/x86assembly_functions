@@ -32,8 +32,12 @@ Test N7 passed
         strlen: 46
 ```
 
-## Contributing
+## Project Ideas & Contributions
 
 Pull requests are welcome. For any changes.
 
 Please make sure to update tests as appropriate.
+
+### Current Ideas
+
+- [ ] Enhance the existing test suite to improve code coverage and test effectiveness without relying on any third-party libraries.
