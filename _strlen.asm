@@ -1,9 +1,14 @@
 ; -----------------------------------------------------------------------------
 ; Function:   _strlen
 ; Purpose:    Determines the length of a C-style NUL-terminated string.
+;
+; Prototype: size_t _strlen(const char *str);
 ; 
-; Inputs:     Pointer to the null-terminated string in RCX.
-; Outputs:    Length of the string stored in RAX.
+; Inputs:
+;   RCX - Pointer to the null-terminated string.
+;
+; Outputs:
+;   RAX - Length of the string.
 ; -----------------------------------------------------------------------------
 
 

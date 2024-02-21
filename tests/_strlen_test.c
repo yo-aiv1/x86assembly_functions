@@ -20,13 +20,11 @@ int main() {
         size_t _strlenSize = _strlen(tests[i]);
         size_t strlenSize = strlen(tests[i]);
         
-        if (_strlenSize != strlenSize) {
-            printf("Test N%d failed\n", i + 1);
+        if (_strlenSize == strlenSize) {
+           printf("TEST N%d PASSED\n", i);
         } else {
-            printf("Test N%d passed\n", i + 1);
+            printf("TEST N%d FAILED\n\tTest case:\n\t\tTestCase: %s\n", i, tests[i]);
         }
-
-        printf("\t_strlen: %zu\n\tstrlen: %zu\n", _strlenSize, strlenSize);
     }
     
     return 0;
