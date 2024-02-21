@@ -8,23 +8,22 @@
 
 
 section .text
-	global      _strlen         ; entry point
+	global _strlen      ; Entry point
 
 _strlen:
-	push        rbx             ; push rbx to the stack (callee-saved register)
-	xor         rax, rax        ; xor rax to set it to 0.
-	call        start           ; call the start which is a loop
-	pop			rbx				; pop rbx from the stack
-	ret							; return from _strlen, the returned value will be stored in rax
+    push    rbx         ; Push RBX to the stack (callee-saved register)
+    xor     rax, rax    ; Clear RAX (set it to 0)
+    call    start       ; Call the start label to begin the loop
+    pop     rbx         ; Restore the original value of RBX
+    ret                 ; Return from _strlen, the length is stored in RAX
 
 start:
-	cmp         byte [rcx], 0   ; Compare the byte at the memory location pointed by rax with 0 (null terminator)
-	je			stop			; if the byte at rcx equal 0 which means it is the end of the string jump to stop
-								; if it is not equal it will carry on with the following instructions
-	inc			rcx				; increase rcx to move to the next byte
-	inc         rax				; increase our counter by 1
-	call		start			; call start to do the same
-
-
+    cmp     byte [rcx], 0   ; Compare the byte at the memory location pointed by RCX with 0 (null terminator)
+    je      stop            ; If the byte at RCX is equal to 0, jump to the stop label (end of string)
+                            ; If not, continue with the following instructions
+    inc     rcx             ; Move to the next byte
+    inc     rax             ; Increment the counter (string length)
+    call    start           ; Recursive call to continue processing the string
+                            ; This is a tail-recursive approach
 stop:
-	ret							; return to _strlen
+    ret                     ; Return to _strlen
