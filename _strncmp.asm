@@ -18,10 +18,7 @@ section .text
     global _strncmp     ; Entry point
 
 _strncmp:
-    push    rbx         ; Preserve RBX (callee-saved register)
-    call    start       ; Call the start label to begin the loop
-    pop     rbx         ; Restore the original value of RBX
-    ret                 ; Return from _strncmp
+    push    rbx              ; Preserve RBX (callee-saved register)
 
 start:
     dec     r8               ; Decrement count
@@ -38,8 +35,12 @@ start:
 
 equal:
     xor     rax, rax         ; Set result to 0 (strings are equal)
-    ret                      ; Return to entry point
+    jmp     end              ; jump to the end of the function
 
 notequal:
     mov     rax, 1           ; Set result to 1 (strings are not equal)
-    ret                      ; Return to entry point
+    jmp     end              ; jump to the end of the function
+
+end:
+    pop     rbx              ; Restore the original value of RBX
+    ret                      ; Return from _strncmp
